@@ -1,0 +1,117 @@
+﻿
+@model IRRIGA.Models.CreateUserWithRoleViewModel
+@{
+    ViewData["Title"] = "CreateUser";
+}
+
+<div class="col-md-12">
+    <!-- Horizontal Form -->
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Adicionar</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form asp-action="CreateUserWithRole" method="post" class="form-horizontal">
+            <div class="card-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group row">
+                    <label asp-for="Nome" for="inputEmail3" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Nome" class="form-control" id="inputEmail3" placeholder="Nome" />
+                    </div>
+
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Apelido" for="inputEmail3" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Apelido" class="form-control" id="inputEmail3" placeholder="Apelido" />
+                    </div>
+
+                    <span asp-validation-for="Apelido" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="UserName" for="inputEmail3" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="UserName" class="form-control" id="inputEmail3" placeholder="Username" />
+                    </div>
+
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Email" for="inputEmail4" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Email" class="form-control" id="inputEmail4" placeholder="Email" />
+                    </div>
+
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="idRole" for="inputEmail4" class="col-sm-2 col-form-label">Role</label>
+                    <div class="col-sm-10">
+                        @Html.DropDownList("idRole", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+
+                    <span asp-validation-for="idRole" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="IdAssociacaoes" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <select asp-for="IdAssociacaoes" multiple="multiple" data-placeholder="Selecionar Associação" class="form-control select2">
+                        </select>
+                    </div>
+                    <span asp-validation-for="IdAssociacaoes" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="IdRegadios" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <select asp-for="IdRegadios" multiple="multiple" data-placeholder="Selecionar Regadio" class="form-control select2">
+                        </select>
+                    </div>
+                    <span asp-validation-for="IdRegadios" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="IdEscolas" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <select asp-for="IdEscolas" multiple="multiple" data-placeholder="Selecionar Escola" class="form-control select2">
+                        </select>
+                    </div>
+                    <span asp-validation-for="IdEscolas" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="IdInqueritos" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <select asp-for="IdInqueritos" multiple="multiple" data-placeholder="Selecionar Menu" class="form-control select2">
+                        </select>
+                    </div>
+                    <span asp-validation-for="IdInqueritos" class="text-danger"></span>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a asp-action="ListUsers" type="submit" class="btn btn-default">Voltar</a>
+                <input type="submit" value="Salvar" class="btn btn-primary float-right" />
+            </div>
+            <!-- /.card-footer -->
+        </form>
+    </div>
+</div>
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        background-color: #007bff;
+        border: 1px solid #007bff;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+        color: #fff;
+    }
+</style>
+@section Scripts {
+    <script src="~/plugins/select2/js/select2.full.min.js"></script>
+    <script src="~/plugins/moment/moment.min.js"></script>
+    <script src="~/js/views/administration/CreateUserWithRole.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
